@@ -18,7 +18,7 @@ import domain.Validator;
 /**
  * Servlet Filter implementation class RegisterFilter
  */
-@WebFilter("/*")
+@WebFilter("/RegisterServlet")
 public class RegisterFilter implements Filter {
 
     /**

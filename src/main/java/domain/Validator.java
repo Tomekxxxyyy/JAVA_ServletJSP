@@ -20,7 +20,7 @@ public class Validator {
 	
 	public void isCorrectLogin(ArrayList<User> registeredUsers, String userName, String password){
 		if(registeredUsers.size() == 0){
-			message = "Baza użytkowników jest jeszcze pusta. Zarejestrój się";
+			message = "Baza użytkowników jest jeszcze pusta. Zarejestruj się";
 		}
 		for(User user : registeredUsers){
 			if(user.getUserName().equals(userName) && user.getPassword().equals(password)){

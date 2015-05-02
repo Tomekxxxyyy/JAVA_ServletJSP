@@ -1,29 +1,31 @@
 package web;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Enumeration;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import domain.RegisteredUsers;
 import domain.User;
 
 /**
- * Servlet implementation class PremiumUsersServlet
+ * Servlet implementation class RegisteredUsersServlet
  */
-@WebServlet("/AdminServlet")
-public class AdminServlet extends HttpServlet {
+@WebServlet("/RegisteredUsersServlet")
+public class RegisteredUsersServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminServlet() {
+    public RegisteredUsersServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,14 +34,17 @@ public class AdminServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-				
+		
 		RequestDispatcher display = request.getRequestDispatcher("DisplayServlet");
-		HttpSession session = request.getSession();
-		User user = new User();
-			user.setUserName("admin");
-			user.setAdmin(true);
-			session.setAttribute("user", user);
-			display.forward(request, response);	
+		ServletContext context = request.getServletContext();
+		Enumeration<String> parameterNames = request.getParameterNames();
+		RegisteredUsers registeredUsers = new RegisteredUsers();
+		String userIndex = parameterNames.nextElement();
+		String premiumStatus = request.getParameter(userIndex);
+			registeredUsers.setRegisteredUsers((ArrayList<User>) context.getAttribute("registeredUsers"));
+			registeredUsers.premiumStatus(Integer.parseInt(userIndex),Boolean.parseBoolean(premiumStatus));
+			context.setAttribute("registeredUsers", registeredUsers.getRegisteredUsers());
+			display.forward(request, response);
 	}
 
 	/**

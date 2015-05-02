@@ -32,8 +32,11 @@ public class DisplayServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		RequestDispatcher index = request.getRequestDispatcher("index.jsp");
+		RequestDispatcher account = request.getRequestDispatcher("account.jsp");
 		if(session.getAttribute("user") == null)
 			index.forward(request, response);
+		else
+			account.forward(request, response);
 	}
 
 	/**

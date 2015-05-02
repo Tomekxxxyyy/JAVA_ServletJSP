@@ -8,6 +8,7 @@ public class User {
 	
 	boolean premium;
 	boolean admin;
+	
 	public String getUserName() {
 		return userName;
 	}

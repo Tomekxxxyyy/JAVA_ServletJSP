@@ -9,6 +9,9 @@ public class RegisteredUsers {
 	public void addUser(User user){
 		registeredUsers.add(user);
 	}
+	public void premiumStatus(int index, boolean premiumStatus){
+		registeredUsers.get(index).setPremium(premiumStatus);
+	}
 
 	public ArrayList<User> getRegisteredUsers() {
 		return registeredUsers;

@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+
+body{
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 2.5%;
+	background-color: #D7F7F6;
+}
+
+div#login{
+	text-align:right;
+	float:right;
+}
+div#register{
+	text-align:left;
+	float:left;
+}
+div.welcome{
+	text-align:center;
+	clear:both;
+	width:50%;
+	margin:auto;
+}
+div#logout{
+	float:right;
+}
+div.account{
+	float:left;
+	margin-right:15px
+}

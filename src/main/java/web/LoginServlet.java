@@ -39,12 +39,8 @@ public class LoginServlet extends HttpServlet {
 		
 		RequestDispatcher display = request.getRequestDispatcher("DisplayServlet");
 		HttpSession session = request.getSession();
-		User user = new User();
-			user.setUserName(request.getParameter("userName"));
-			user.setUserName(request.getParameter("password"));
-			user.setUserName(request.getParameter("email"));
-			session.setAttribute("user", user);
-			display.forward(request, response);	
+		session.setAttribute("user", request.getAttribute("user"));
+		display.forward(request, response);	
 	}
 
 	/**

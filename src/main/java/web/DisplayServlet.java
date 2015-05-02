@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import domain.Displayer;
+import domain.User;
+
 /**
  * Servlet implementation class DisplayServlet
  */
@@ -30,13 +33,16 @@ public class DisplayServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		Displayer displayer = new Displayer();
 		HttpSession session = request.getSession();
 		RequestDispatcher index = request.getRequestDispatcher("index.jsp");
-		RequestDispatcher account = request.getRequestDispatcher("account.jsp");
+			
 		if(session.getAttribute("user") == null)
 			index.forward(request, response);
-		else
-			account.forward(request, response);
+		else{
+			RequestDispatcher logged = request.getRequestDispatcher(displayer.validateUser((User)session.getAttribute("user")));
+			logged.forward(request, response);
+		}
 	}
 
 	/**

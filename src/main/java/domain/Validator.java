@@ -25,6 +25,7 @@ public class Validator {
 		for(User user : registeredUsers){
 			if(user.getUserName().equals(userName) && user.getPassword().equals(password)){
 				this.user = user;
+				message = null;
 				break;
 			}
 			else

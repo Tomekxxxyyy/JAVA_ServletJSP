@@ -41,7 +41,7 @@ public class RegisterFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		
 		Validator validator = new Validator();
-		RequestDispatcher index = request.getRequestDispatcher("index.jsp");
+		RequestDispatcher display = request.getRequestDispatcher("DisplayServlet");
 		
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
@@ -52,12 +52,13 @@ public class RegisterFilter implements Filter {
 						
 		if(validator.getMessage() != null){	
 			request.setAttribute("message", validator.getMessage());
-			index.forward(request, response);
+			display.forward(request, response);
 		}
 		else
 			chain.doFilter(request, response);
 		
-		request.setAttribute("message", "Rejestracja zakończyła się powodzeniem");
+			request.setAttribute("message", "Rejestracja zakończyła się powodzeniem");
+			display.forward(request, response);
 	}
 
 	/**

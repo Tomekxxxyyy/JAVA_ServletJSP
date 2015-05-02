@@ -1,11 +1,21 @@
 package web;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import domain.RegisteredUsers;
+import domain.User;
+import domain.Validator;
 
 /**
  * Servlet implementation class LoginServlet
@@ -26,7 +36,15 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		RequestDispatcher display = request.getRequestDispatcher("DisplayServlet");
+		HttpSession session = request.getSession();
+		User user = new User();
+			user.setUserName(request.getParameter("userName"));
+			user.setUserName(request.getParameter("password"));
+			user.setUserName(request.getParameter("email"));
+			session.setAttribute("user", user);
+			display.forward(request, response);	
 	}
 
 	/**

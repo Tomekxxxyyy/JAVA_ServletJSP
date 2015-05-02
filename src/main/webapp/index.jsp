@@ -16,7 +16,7 @@
 	</form>
 	</p>
 	<p>
-	<form action="RegisterServlet" method = "get"> 
+	<form action="LoginServlet" method = "get"> 
 		Username<input type="text" name="userName"/></br>
 		Password<input type="password" name="password"/></br>
 		<input type="submit" value="ok"/>

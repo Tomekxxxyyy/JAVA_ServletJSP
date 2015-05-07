@@ -34,6 +34,14 @@ public class Validator {
 		
 		
 	}
+	public int indexOf(ArrayList<User> registeredUsers, String userName, String password){
+		
+		for(User user : registeredUsers){
+			if(user.getUserName().equals(userName) && user.getPassword().equals(password))
+				return registeredUsers.indexOf(user);
+		}
+		return -1;
+	}
 	public String getMessage() {
 		return message;
 	}

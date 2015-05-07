@@ -1,6 +1,10 @@
 package domain;
 
-public class User {
+import java.util.ArrayList;
+
+public class User{
+	
+	public ArrayList<Addresses> addressesList;
 	
 	String userName;
 	String password;
@@ -8,6 +12,20 @@ public class User {
 	
 	boolean premium;
 	boolean admin;
+	
+	public void editList(int index, Addresses address){
+		addressesList.set(index, address);
+	}
+	
+	public void removeFromList(int index){
+		addressesList.remove(index);
+	}
+	
+	public void addToList(Addresses address){
+		if(addressesList == null)
+			addressesList = new ArrayList<Addresses>();
+		addressesList.add(address);
+	}
 	
 	public String getUserName() {
 		return userName;
@@ -39,6 +57,12 @@ public class User {
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
-	
+	public ArrayList<Addresses> getAddressesList() {
+		return addressesList;
+	}
+	public void setAddressesList(ArrayList<Addresses> addressesList) {
+		this.addressesList = addressesList;
+	}
+		
 	
 }

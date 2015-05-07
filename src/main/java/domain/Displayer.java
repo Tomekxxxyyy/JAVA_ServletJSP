@@ -9,8 +9,8 @@ public class Displayer {
 	public String validateUser(User user){
 		if(user.isAdmin() == true)
 			return admin;
-		else if(user.isPremium() == true)
-			return premium;
+		//else if(user.isPremium() == true)
+		//	return premium;
 		else
 			return this.user;
 		

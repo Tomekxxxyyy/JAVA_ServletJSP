@@ -23,6 +23,8 @@ public class RegisteredUsers {
 		else
 			this.registeredUsers = registeredUsers;
 	}
-	
+	public void updateUser(User user, int index){
+		registeredUsers.set(index, user);
+	}
 	
 }

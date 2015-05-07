@@ -1,27 +1,25 @@
 package web;
 
 import java.io.IOException;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import domain.User;
 
 /**
- * Servlet implementation class PremiumUsersServlet
+ * Servlet implementation class AddressServlet
  */
-@WebServlet("/AdminServlet")
-public class AdminServlet extends HttpServlet {
+@WebServlet("/UserDisplayServlet")
+public class UserDisplayServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminServlet() {
+    public UserDisplayServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,14 +28,24 @@ public class AdminServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-				
+		
 		RequestDispatcher display = request.getRequestDispatcher("DisplayServlet");
-		HttpSession session = request.getSession();
-		User user = new User();
-			user.setUserName("admin");
-			user.setAdmin(true);
-			session.setAttribute("user", user);
-			display.forward(request, response);	
+		String action = request.getParameter("action");
+		if(action.equals("add")){
+				request.setAttribute("display","new");
+		}
+		else if(action.equals("edit")){
+			request.setAttribute("index", request.getParameter("index"));
+			request.setAttribute("addressType", request.getParameter("addresType"));
+			request.setAttribute("voivodeship", request.getParameter("voivodeship"));
+			request.setAttribute("city", request.getParameter("city"));
+			request.setAttribute("postcode", request.getParameter("postcode"));
+			request.setAttribute("street", request.getParameter("street"));
+			request.setAttribute("houseNumber", request.getParameter("houseNumber"));
+			request.setAttribute("display","edit");
+		}
+		display.forward(request, response);
+			
 	}
 
 	/**

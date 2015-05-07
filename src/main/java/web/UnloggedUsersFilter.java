@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class UnloggedUsersFilter
  */
-@WebFilter(urlPatterns = {"/user.jsp", "/premium.jsp", "/admin.jsp"})
+@WebFilter(urlPatterns = {"/user.jsp", "/premium.jsp", "/admin.jsp", "/addressesForm.jsp", "/editAddressesForm.jsp"})
 public class UnloggedUsersFilter implements Filter {
 
     /**
